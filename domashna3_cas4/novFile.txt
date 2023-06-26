@@ -1,0 +1,1 @@
+Kreiranje na nov fajl so asihron metod
