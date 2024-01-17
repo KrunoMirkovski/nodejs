@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits&Vegetables</title>
+
+    <style>
+        body{
+            background-color: rgb(62, 162, 238);
+            justify-content: center;
+        }
+        table {
+            background-color: rgb(218, 248, 254);
+            margin: 50px 100px;
+        }
+        h1 {
+            color: rgb(45, 18, 195);
+            font-style:oblique;
+            font-size: 18px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            width: 100%;
+            text-align: center;
+        }
+        .omilenWrapper{
+            width:40%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+            
+        }
+        h4{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 16px;
+            font-style: italic;
+            text-align: center;
+        }
+        h5{
+            color: azure;
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: bold;
+        }
+        .tableWrapper{
+            width: 80%;
+            display: flex;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .formWrapper{
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        }
+        form label {
+            flex: 1;
+            width: 100%;
+        }
+        form input{
+            flex: 2;
+            width: 100%;            
+        }
+        #button {
+            width: 100px;
+            padding: 8px;
+            margin: 12px 0 auto;
+            display: flex;
+            justify-content: center;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>DODAJ NOVO OVOSHJE ILI ZELENCUK VO TABELA</h1> <hr>
+    <h4>Korisnik: <%= ime%> <%= prezime%></h4>
+
+    <!-- Kreiranje listi so ovoshje i zelenchuk -->
+    <div class="omilenWrapper">
+           <div>
+            <h5>Omileno ovoshje</h5>
+            <ol>
+                <% ovoshje.forEach(element => {  %>
+                    <li><%= element%></li>
+                <% }); %>
+            </ol>
+           </div>
+
+           <div>
+            <h5>Omileni zelenchuci</h5>
+            <ol>
+                <% zelenchuk.forEach(element => {  %>
+                    <li><%= element%></li>
+                <% }); %>
+            </ol>
+           </div>
+    </div>
+    <!-- Kreiranje tabela so elementi od vitamini -->
+    <div class="tableWrapper">
+        <table border="2" width="100%">
+            <tr>
+                <th>Name</th>
+                <th>Vitamini</th>
+                <th>Mineralali</th>
+            </tr>
+    
+            <% vitamini.forEach (vit => { %>
+            <tr>
+                <td><%= vit.ime%></td>
+                <td><%= vit.vitamin%></td>
+                <td><%= vit.mineral%></td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+
+    <!-- Kreiranje na forma za da se dodade nov element vo tabelata -->
+   <div class="formWrapper">
+    <form action="/zelenchuk" method="post">
+        <h3>Dodaj novo ovoshje ili zelenchuk:</h3>
+
+        <label for="ime">Ime:</label>
+        <input type="text" id="ime" name="ime" required> <br>
+
+        <label for="vitamin">Vitamin:</label>
+        <input type="text" id="vitamin" name="vitamin" required> <br>
+        
+        <label for="mineral">Mineral:</label>
+        <input type="text" id="mineral" name="mineral" required> <br>
+
+        <input type="submit" value="Submit" id="button">
+    </form> 
+   </div>
+    
+</body>
+</html>
